@@ -1,0 +1,2 @@
+# cosmostar
+astrology app
