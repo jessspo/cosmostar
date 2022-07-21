@@ -68,7 +68,7 @@ function Login() {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-          <input type="submit" />
+          <input type="submit"/> 
         </div>
       </form>
     </div>
@@ -77,7 +77,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login-form">
-        <div className="title">Sign In</div>
+        <div className="title">Login</div>
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
