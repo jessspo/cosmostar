@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
-import "./Login.css";
+function Register() {
 
-function Login() {
+  const navigate = useNavigate ();
+
+  const navigateResult = () => {
+    navigate (`/result`)
+  }
+  
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -68,8 +75,7 @@ function Login() {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-          <input type="submit"/> 
-        </div>
+        <input onClick= {navigateResult}value="Login" type="submit"/>        </div>
       </form>
     </div>
   );
@@ -77,13 +83,10 @@ function Login() {
   return (
     <div className="login">
       <div className="login-form">
-        
-        {isSubmitted ?
-         <div>User is successfully logged in</div> : renderForm}
-        <div className="title">Login</div>
+        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Register;

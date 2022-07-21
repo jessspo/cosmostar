@@ -6,7 +6,7 @@ import "./Start.css"
 const Start = () => {
   const navigate = useNavigate();
 
-  const navigateLogin = () => {
+  const navigateRegister = () => {
     navigate (`/register`);
   };
 
@@ -26,7 +26,7 @@ const Start = () => {
             <br />STAR</span></h1>
             </div>
           </div>
-            <h2><button onClick={navigateLogin} className='start' >start</button></h2>
+            <h2><button onClick={navigateRegister} className='start' >start</button></h2>
       </div>
   )
 }

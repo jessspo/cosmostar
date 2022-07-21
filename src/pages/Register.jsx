@@ -1,55 +1,105 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+
 import "./Register.css";
 
-class Register extends Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(e.target.email.value);
+function Register() {
+  // React States
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-    if (!e.target.email.value) {
-      alert("Email is required");
-    } else if (!e.target.email.value) {
-      alert("Valid email is required");
-    } else if (!e.target.password.value) {
-      alert("Password is required");
-    } else if (
-      e.target.email.value === "me@example.com" &&
-      e.target.password.value === "123456"
-    ) {
-      alert("Successfully logged in");
-      e.target.email.value = "";
-      e.target.password.value = "";
+  // User Login info
+  const database = [
+    {
+      username: "user1",
+      password: "pass1"
+    },
+    {
+      username: "user2",
+      password: "pass2"
+    }
+  ];
+
+  const errors = {
+    uname: "invalid username",
+    pass: "invalid password"
+  };
+
+  const handleSubmit = (event) => {
+    //Prevent page reload
+    event.preventDefault();
+
+    var { uname, pass } = document.forms[0];
+
+    // Find user login info
+    const userData = database.find((user) => user.username === uname.value);
+
+    // Compare user info
+    if (userData) {
+      if (userData.password !== pass.value) {
+        // Invalid password
+        setErrorMessages({ name: "pass", message: errors.pass });
+      } else {
+        setIsSubmitted(true);
+      }
     } else {
-      alert("Wrong email or password combination");
+      // Username not found
+      setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
 
-  handleClick = e => {
-    e.preventDefault();
-
-    alert("Goes to registration page");
-  };
-
-  render() {
-    return (
-      <div className="register">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" placeholder="nome@email.com.br" />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Senha</label>
-            <input type="password" name="password" />
-          </div>
-          <button className="primary">ENTRAR</button>
-        </form>
-        <button className="secondary" onClick={this.handleClick}>
-          Criar uma nova conta
-        </button>
-      </div>
+  // Generate JSX code for error message
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
     );
-  }
+
+  // JSX code for login form
+  const renderForm = (
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>your full name </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>date of birth</label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>city of birth </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>time of birth </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>email</label>
+          <input type="password" name="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="input-container">
+          <label>password </label>
+          <input type="password" name="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="button-container">
+        <input value="Register" type="submit"/>        </div>
+      </form>
+    </div>
+  );
+
+  return (
+    <div className="login">
+      <div className="login-form">
+        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+      </div>
+    </div>
+  );
 }
 
 export default Register;

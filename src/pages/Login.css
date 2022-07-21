@@ -32,17 +32,29 @@
   }
   
   input[type="submit"] {
-    margin-top: 10px;
+    margin-top: 5rem;
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.052);
     font-size: 15px;
-    /* border: 1px solid; */
     color: #fff;
     padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: flex-end;
+    border: none;
+    cursor: pointer;
+    font-family: "Playfair Display", serif;
   }
   
-  input[type="login"]:hover {
-    background: #040d4a06;
-  }
+  /* input[type="submit"]:hover {
+    font-size: 25px;
+    font-weight: 800;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.12);
+  } */
   
   .button-container {
     display: flex;
