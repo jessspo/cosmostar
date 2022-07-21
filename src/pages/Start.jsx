@@ -6,7 +6,7 @@ import "./Start.css"
 const Start = () => {
   const navigate = useNavigate();
 
-  const handleStart = () => {
+  const navigateLogin = () => {
     navigate (`/login`);
   };
 
@@ -23,10 +23,10 @@ const Start = () => {
           <div className='shadow'>
           <div className='title'>
             <h1 className='cosmic_title'>Cosmic <span className="star_title">
-            <br /> STAR</span></h1>
+            <br />STAR</span></h1>
             </div>
           </div>
-            <h2><button onClick={{handleStart}}className='start' >start</button></h2>
+            <h2><button onClick={() => (navigateLogin)} className='start' >start</button></h2>
       </div>
   )
 }
