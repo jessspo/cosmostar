@@ -59,15 +59,15 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>your full name </label>
-          <input type="text" name="uname" required />
+          <input type="name" name="uname" required />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>date of birth</label>
-          <input type="text" name="uname" required />
+          <input type="date" name="uname" required />
           {renderErrorMessage("uname")}
         </div>
-        <div className="input-container">
+        {/* <div className="input-container">
           <label>city of birth </label>
           <input type="text" name="uname" required />
           {renderErrorMessage("uname")}
@@ -76,10 +76,10 @@ function Register() {
           <label>time of birth </label>
           <input type="text" name="uname" required />
           {renderErrorMessage("uname")}
-        </div>
+        </div> */}
         <div className="input-container">
           <label>email</label>
-          <input type="password" name="pass" required />
+          <input type="email" name="pass" required />
           {renderErrorMessage("pass")}
         </div>
         <div className="input-container">
