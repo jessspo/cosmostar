@@ -77,8 +77,10 @@ function Login() {
   return (
     <div className="login">
       <div className="login-form">
+        
+        {isSubmitted ?
+         <div>User is successfully logged in</div> : renderForm}
         <div className="title">Login</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
   );
