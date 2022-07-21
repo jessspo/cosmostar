@@ -1,72 +1,87 @@
-import React, { useContext } from "react";
-import { MyContext } from "../context/MyProvider";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState } from "react";
 
-const Login= () => {
-  const navigate = useNavigate();
-  const context = useContext(MyContext);
-  const { setAuthToken } = useContext(AuthContext);
+import "./Login.css";
 
-  const handleLogin = (event) => {
+function Login() {
+  // React States
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // User Login info
+  const database = [
+    {
+      username: "user1",
+      password: "pass1"
+    },
+    {
+      username: "user2",
+      password: "pass2"
+    }
+  ];
+
+  const errors = {
+    uname: "invalid username",
+    pass: "invalid password"
+  };
+
+  const handleSubmit = (event) => {
+    //Prevent page reload
     event.preventDefault();
-    fetch("http://localhost:3306/log", {
-      method: "POST",
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-      body: JSON.stringify({
-        email: context.user.email,
-        hash_password: context.user.hash_password,
-      }),
-    })
-      .then((response) => {
-        if (response.status === 500) {
-          context.setUser(context.blankUser);
-        }
-        return response.json();
-      })
-    .then((data) => {
-      // console.log(data);
-      setAuthToken(data.token);
-      context.SetLogIn(true);
-      // console.log(authToken);
-      context.setUser(context.blankUser);
-      context.setUserID(data.id);
-      navigate("/cards");
-    })
-  }
+
+    var { uname, pass } = document.forms[0];
+
+    // Find user login info
+    const userData = database.find((user) => user.username === uname.value);
+
+    // Compare user info
+    if (userData) {
+      if (userData.password !== pass.value) {
+        // Invalid password
+        setErrorMessages({ name: "pass", message: errors.pass });
+      } else {
+        setIsSubmitted(true);
+      }
+    } else {
+      // Username not found
+      setErrorMessages({ name: "uname", message: errors.uname });
+    }
+  };
+
+  // Generate JSX code for error message
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
+
+  // JSX code for login form
+  const renderForm = (
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>email </label>
+          <input type="text" name="uname" required />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>password </label>
+          <input type="password" name="pass" required />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="button-container">
+          <input type="submit" />
+        </div>
+      </form>
+    </div>
+  );
 
   return (
-    <div className="login-page-container">
-      <div className="login_page">
-        <div>
-          <h1 className="text">Log in to your account</h1>
-        </div>
-        <form onSubmit={handleLogin} className="loginForm" >
-          <input
-            value={context.user.email}
-            onChange={context.handleLogReg}
-            name="email"
-            placeholder="Email"
-          />
-          <hr className="create-card-form-divider" />
-          <input
-            value={context.user.hash_password}
-            onChange={context.handleLogReg}
-            name="hash_password"
-            placeholder="Password"
-            type="password"
-          />
-          <hr className="create-card-form-divider" />
-          <input className="reg" type="submit" value="Submit" />
-        </form>
-        <span className="forgotPassword">
-          <a href="https://www.w3schools.com">Forgot password?</a>
-        </span>
+    <div className="login">
+      <div className="login-form">
+        <div className="title">Sign In</div>
+        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
   );
-};
+}
 
 export default Login;

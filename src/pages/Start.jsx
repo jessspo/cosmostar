@@ -7,7 +7,7 @@ const Start = () => {
   const navigate = useNavigate();
 
   const navigateLogin = () => {
-    navigate (`/login`);
+    navigate (`/register`);
   };
 
   return (
@@ -26,7 +26,7 @@ const Start = () => {
             <br />STAR</span></h1>
             </div>
           </div>
-            <h2><button onClick={() => (navigateLogin)} className='start' >start</button></h2>
+            <h2><button onClick={navigateLogin} className='start' >start</button></h2>
       </div>
   )
 }
