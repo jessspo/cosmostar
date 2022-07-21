@@ -6,8 +6,8 @@ function Register() {
 
   const navigate = useNavigate ();
 
-  const navigateResult = () => {
-    navigate (`/result`)
+  const navigateWelcome = () => {
+    navigate (`/welcome`)
   }
   
   // React States
@@ -75,7 +75,7 @@ function Register() {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-        <input onClick= {navigateResult}value="Login" type="submit"/>        </div>
+        <input onClick= {navigateWelcome}value="Login" type="submit"/>        </div>
       </form>
     </div>
   );

@@ -1,8 +1,19 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
 function Register() {
+
+  const navigate = useNavigate ();
+
+  const navigateWelcome = () => {
+    navigate (`/welcome`);
+  }
+
+  const navigateLogin = () => {
+    navigate (`/login`);
+  }
+
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -55,7 +66,11 @@ function Register() {
 
   // JSX code for login form
   const renderForm = (
+    
     <div className="form">
+              <div className="button-login">
+        <input onClick= {navigateLogin}value="Login" type="submit"/>        </div>
+
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>your full name </label>
@@ -88,7 +103,7 @@ function Register() {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-        <input value="Register" type="submit"/>        </div>
+        <input onClick= {navigateWelcome}value="Register" type="submit"/>        </div>
       </form>
     </div>
   );
@@ -101,5 +116,6 @@ function Register() {
     </div>
   );
 }
+
 
 export default Register;
