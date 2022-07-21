@@ -40,7 +40,7 @@
     padding: 10px 20px;
   }
   
-  input[type="submit"]:hover {
+  input[type="login"]:hover {
     background: #040d4a06;
   }
   
