@@ -1,7 +1,16 @@
 import React from 'react'
-import welcome from "../images/welcome.jpg"
+import welcome from "../images/welcome.jpg";
+import "./Welcome.css";
+import { useNavigate } from 'react-router-dom';
 
-function Welcome(props) {
+const Welcome = (props)  => {
+
+  const navigate = useNavigate ();
+
+  const navigateHoroscope = () => {
+    navigate (`/horoscope`);
+  }
+
   return (
     <div 
     style={{backgroundImage: `url(${welcome})`,
@@ -11,10 +20,15 @@ function Welcome(props) {
     height: '100%',
     marginTop: 0,
     }}>
+      
      <div className='shadow'>
-            <div className='title'>
-              <h1 className='cosmic_title'>Welcome <span className="star_title">
-              <br />{props.name}</span></h1>
+            <div>
+              <h1>WELCOME, *name*
+              <br />{props.name}</h1>
+              <br />
+              <br />
+              <span className='subtitle_welcome'>your star sign is <button className='sign'
+              onClick={navigateHoroscope}>*****{props.sign}</button></span>
             </div>
       </div>
     </div>

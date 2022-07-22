@@ -21,7 +21,7 @@ const Start = () => {
         marginTop: 0,
         }}>
           <div className='shadow'>
-          <div className='title'>
+          <div className='start_title'>
             <h1 className='cosmic_title'>Cosmic <span className="star_title">
             <br />STAR</span></h1>
             </div>
