@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
-function Register() {
+const Register = () => {
 
   const navigate = useNavigate ();
 
