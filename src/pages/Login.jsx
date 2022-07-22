@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Register.css";
+import "./Login.css";
 
-function Register() {
+function Login() {
 
   const navigate = useNavigate ();
 
@@ -17,11 +17,11 @@ function Register() {
   // User Login info
   const database = [
     {
-      username: "user1",
+      username: "daniel@mail.com",
       password: "pass1"
     },
     {
-      username: "user2",
+      username: "lara@mail.com",
       password: "pass2"
     }
   ];
@@ -89,4 +89,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;
