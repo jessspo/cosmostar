@@ -27,7 +27,7 @@ const Welcome = (props)  => {
               <br />{props.name}</h1>
               <br />
               <br />
-              <span className='subtitle_welcome'>your star sign is <button className='sign'
+              <span className='subtitle_welcome'>your star sign is {"\n"}<button className='sign'
               onClick={navigateHoroscope}>*****{props.sign}</button></span>
             </div>
       </div>
