@@ -15,11 +15,14 @@ const PersonHoroscope = (props) => {
       
      <div className='shadow_horoscope'>
             <div>
-            <h1>Personality Horoscope</h1>
+            <h1>Gemini</h1>
             </div>
             <div className='box'>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas laboriosam corporis blanditiis rem nesciunt mollitia omnis quam doloribus recusandae voluptates adipisci consectetur possimus commodi, ab, cumque suscipit itaque aliquam ratione.
-            </div>
+            <p>The twins are used to describe the sign of Gemini because typical Gemini people love to share ideas with someone else. The most important thing for a Gemini is communication. Gemini people are almost always curious about lots of different things. A typical Gemini person usually enjoys being with other people, and loves to talk about the latest thing he is doing. People usually like their Gemini friends, because they have something interesting to share with everybody.</p>
+
+            <p>Many Gemini people are talented at writing, teaching and public speaking. Some are gifted dancers. Many of them work in the fields of radio, television and newspapers because they love to be around when news is being created. It is especially important for Gemini people to travel and meet new people.</p>
+
+ </div>
       </div>
     </div>
   )

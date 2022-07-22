@@ -1,16 +1,36 @@
 .shadow_horoscope {
+    font-weight: 900;
+    background-color: none;
+    font-size: 2rem;
+
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-weight: 600;
-    font-size: 2rem;
+    text-align: center;
     font-family: "Playfair Display", serif;
-    color: white;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    /* display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center; */
+    /* background-color: rgba(255, 255, 255, 0.12); */
+    /* border-radius: 1px; */
+    -webkit-backdrop-filter: blur(10px); 
+    /* backdrop-filter: blur(10px);  */
+    max-width: 100%;
+    max-height: 100%;
+    padding: 20px 20px;
+    flex: 1;
 }
 
 .box {
     display: flex;
+    font-size: 2rem;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -21,7 +41,6 @@
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.04);
-
 }
 
 

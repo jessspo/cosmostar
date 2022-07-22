@@ -23,11 +23,11 @@ const Welcome = (props)  => {
       
      <div className='shadow_welcome'>
             <div>
-              <h1 className='shadow_welcome'>WELCOME, <h1 className='name'>*name*</h1>
+              <h1 className='shadow_welcome'>WELCOME, <h1 className='name'>Lara</h1>
               {props.name}</h1>
            
               <span className='subtitle_welcome'>your star sign is <button className='button_sign' 
-              onClick={navigateHoroscope}>*****{props.sign}</button></span>
+              onClick={navigateHoroscope}>Gemini{props.sign}</button></span>
             </div>
       </div>
     </div>

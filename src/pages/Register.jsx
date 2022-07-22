@@ -67,9 +67,10 @@ function Register() {
   // JSX code for login form
   const renderForm = (
     
-    <div className="form">
-              <div className="button-login">
-        <input onClick= {navigateLogin}value="Login" type="submit"/>        </div>
+    <div>
+      <div className="button-login">
+        <input onClick= {navigateLogin}value="Login" type="submit"/>        
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className="input-container">
