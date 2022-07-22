@@ -79,7 +79,7 @@ function Register() {
         </div>
         <div className="input-container">
           <label>date of birth</label>
-          <input type="date" name="uname" required />
+          <input type="date" name="birth" required />
           {renderErrorMessage("uname")}
         </div>
         {/* <div className="input-container">
@@ -94,7 +94,7 @@ function Register() {
         </div> */}
         <div className="input-container">
           <label>email</label>
-          <input type="email" name="pass" required />
+          <input type="email" name="email" required />
           {renderErrorMessage("pass")}
         </div>
         <div className="input-container">

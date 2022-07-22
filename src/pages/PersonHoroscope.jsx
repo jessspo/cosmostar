@@ -13,7 +13,7 @@ const PersonHoroscope = (props) => {
     marginTop: 0,
     }}>
       
-     <div className='shadow'>
+     <div className='shadow_horoscope'>
             <div>
             <h1>Personality Horoscope</h1>
             </div>

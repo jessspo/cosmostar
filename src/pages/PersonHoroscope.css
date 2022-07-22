@@ -1,4 +1,4 @@
-.shadow {
+.shadow_horoscope {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,12 +6,14 @@
     font-weight: 600;
     font-size: 2rem;
     font-family: "Playfair Display", serif;
+    color: white;
 }
 
 .box {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    text-align: center;
     /* background-color: transparent; */
     padding: 2rem;
     box-shadow: 0 4px 8px 0 rgba(230, 220, 220, 0.034), 0 6px 20px 0 rgba(124, 72, 72, 0.19);
@@ -25,7 +27,7 @@
 
 @media screen and (min-width: 0) and (max-width: 480px) {
 
-    .shadow {
+    .shadow_horoscope {
         /* display: flex;
         align-items: center;
         justify-content: center;
