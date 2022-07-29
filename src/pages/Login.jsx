@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
 
   const navigateWelcome = () => {
-    navigate (`/welcome`)
-  }
-  
+    navigate(`/welcome`);
+  };
+
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -18,17 +17,17 @@ const Login = () => {
   const database = [
     {
       username: "daniel@mail.com",
-      password: "pass1"
+      password: "pass1",
     },
     {
       username: "lara@mail.com",
-      password: "pass2"
-    }
+      password: "pass2",
+    },
   ];
 
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
 
   const handleSubmit = (event) => {
@@ -47,6 +46,7 @@ const Login = () => {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+        navigateWelcome();
       }
     } else {
       // Username not found
@@ -75,7 +75,8 @@ const Login = () => {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-        <input onClick= {navigateWelcome}value="Login" type="submit"/>        </div>
+          <input value="Login" type="submit" />{" "}
+        </div>
       </form>
     </div>
   );
@@ -87,6 +88,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
