@@ -1,61 +1,59 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { UserDatabase } from "../data/UserDatabase";
 import "./Register.css";
 
 const Register = () => {
-
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
+  const { setAuthToken } = useContext(AuthContext);
 
   const navigateWelcome = () => {
-    navigate (`/welcome`);
-  }
+    navigate(`/welcome`);
+  };
 
   const navigateLogin = () => {
-    navigate (`/login`);
-  }
+    navigate(`/login`);
+  };
 
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
-
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
 
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
+    var { firstName, lastName, dateOfBirth, email, password } =
+      document.forms[0];
 
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-
-    // Compare user info
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
+    if (UserDatabase.find((user) => user.email === email.value)) {
+      setErrorMessages({
+        name: "email",
+        message: "Email already has an account.",
+      });
+      return;
     }
+
+    // TODO: verify all fields
+    UserDatabase.push({
+      email: email.value,
+      password: password.value,
+      firstName: firstName.value,
+      lastName: lastName.value,
+      dateOfBirth: new Date(dateOfBirth.value),
+    });
+
+    setAuthToken(email.value);
+    setIsSubmitted(true);
+    navigateWelcome();
   };
 
   // Generate JSX code for error message
@@ -66,22 +64,26 @@ const Register = () => {
 
   // JSX code for login form
   const renderForm = (
-    
     <div>
       <div className="button-login">
-        <input onClick= {navigateLogin}value="Login" type="submit"/>        
+        <input onClick={navigateLogin} value="Login" type="submit" />
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label>your full name </label>
-          <input type="name" name="uname" required />
-          {renderErrorMessage("uname")}
+          <label>first name</label>
+          <input type="name" name="firstName" required />
+          {renderErrorMessage("firstName")}
+        </div>
+        <div className="input-container">
+          <label>last name</label>
+          <input type="name" name="lastName" required />
+          {renderErrorMessage("lastName")}
         </div>
         <div className="input-container">
           <label>date of birth</label>
-          <input type="date" name="birth" required />
-          {renderErrorMessage("uname")}
+          <input type="date" name="dateOfBirth" required />
+          {renderErrorMessage("dateOfBirth")}
         </div>
         {/* <div className="input-container">
           <label>city of birth </label>
@@ -96,15 +98,16 @@ const Register = () => {
         <div className="input-container">
           <label>email</label>
           <input type="email" name="email" required />
-          {renderErrorMessage("pass")}
+          {renderErrorMessage("email")}
         </div>
         <div className="input-container">
           <label>password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
+          <input type="password" name="password" required />
+          {renderErrorMessage("password")}
         </div>
         <div className="button-container">
-        <input onClick= {navigateWelcome}value="Register" type="submit"/>        </div>
+          <input value="Register" type="submit" />
+        </div>
       </form>
     </div>
   );
@@ -116,7 +119,6 @@ const Register = () => {
       </div>
     </div>
   );
-}
-
+};
 
 export default Register;
