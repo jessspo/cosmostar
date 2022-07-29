@@ -1,34 +1,25 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { UserDatabase } from "../data/UserDatabase";
 import "./Login.css";
 
 const Login = () => {
-
-  const navigate = useNavigate ();
+  const navigate = useNavigate();
+  const { setAuthToken } = useContext(AuthContext);
 
   const navigateWelcome = () => {
-    navigate (`/welcome`)
-  }
-  
+    navigate(`/welcome`);
+  };
+
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // User Login info
-  const database = [
-    {
-      username: "daniel@mail.com",
-      password: "pass1"
-    },
-    {
-      username: "lara@mail.com",
-      password: "pass2"
-    }
-  ];
-
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
 
   const handleSubmit = (event) => {
@@ -38,7 +29,7 @@ const Login = () => {
     var { uname, pass } = document.forms[0];
 
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+    const userData = UserDatabase.find((user) => user.email === uname.value);
 
     // Compare user info
     if (userData) {
@@ -47,6 +38,8 @@ const Login = () => {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+        setAuthToken(uname.value);
+        navigateWelcome();
       }
     } else {
       // Username not found
@@ -75,7 +68,8 @@ const Login = () => {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-        <input onClick= {navigateWelcome}value="Login" type="submit"/>        </div>
+          <input value="Login" type="submit" />{" "}
+        </div>
       </form>
     </div>
   );
@@ -87,6 +81,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
