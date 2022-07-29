@@ -21,14 +21,15 @@ const Welcome = (props)  => {
     marginTop: 0,
     }}>
       
-     <div className='shadow_welcome'>
-            <div>
-              <h1 className='shadow_welcome'>WELCOME, <h1 className='name'>Lara</h1>
-              {props.name}</h1>
-           
-              <span className='subtitle_welcome'>your star sign is <button className='button_sign' 
-              onClick={navigateHoroscope}>Gemini{props.sign}</button></span>
-            </div>
+      <div className='shadow_welcome'>
+        <div>
+          <h1 className='shadow_welcome'>WELCOME, <h1 className='name'>*name*</h1>
+          {props.name}</h1>
+        
+          <span className='subtitle_welcome'>your star sign is <button className='button_sign' 
+          onClick={navigateHoroscope}>*star_sign*{props.sign}</button>
+          </span>
+        </div>
       </div>
     </div>
   )

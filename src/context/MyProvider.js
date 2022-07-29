@@ -1,35 +1,16 @@
 import React, { useState } from "react";
 // import { useNavigate } from 'react-router-dom';
-
 export const MyContext = React.createContext();
 
 const MyProvider = (props) => {
     //first for the create new card form, set-up the object that will be filled by the information filled in
     const newCard = {
-      id: null,
-      image: "",
-      type: "",
-      first_name: "",
-      last_name: "",
-      title: "",
-      department: "",
-      company: "",
-      phone: 0,
+      full_name: "",
+      date_of_birth: "",
       email: "",
-      address: "",
-      website: "",
-      link: "",
-      pdf: "",
-      twitter: "",
-      instagram: "",
-      linkedin: "",
-      facebook: "",
-      youtube: "",
-      whatsapp: "",
-      documents: "",
-      files: "",
-      colour: ""
+      password:""
     };
+
     //Then create a state and set it to the empty object of newCard
     let [crtCard, setCrtCard] = useState(newCard);
 
@@ -45,14 +26,10 @@ const MyProvider = (props) => {
   //Below will be the code for registering a new user
   //First set-up an empty object that is ready to receive the information from the user
   const blankUser = {
-    image_url: "",
-    first_name: "",
-    last_name: "",
+    full_name: "",
     email: "",
     hash_password: "",
     birthday: 0,
-    subscription: "",
-    date: 0,
   };
 
   //Now set-up the state which is ready to receive the info
@@ -72,29 +49,13 @@ const MyProvider = (props) => {
 
   //A state to check the status of wether the user is logged in or not
   let [loggedIn, SetLogIn] = useState(false);
-
   let [userId, setUserID] = useState(null);
 
   const contactBlank = {
-    image: "",
     full_name: "",
-    title: "",
-    company: "",
+    date_of_birth: "",
     email: "",
-    phone: 0,
-    website: "",
-    linkdin: "",
-    documents: "",
-    files: "",
-    add_date: null,
-    add_time: null,
-    contact_type: "",
-    tag1: "",
-    tag2: "",
-    tag3: "",
-    tag4: "",
-    notes: "",
-    users_id: null,
+    password: "",
   }
 
   let [contact, setContact] = useState(contactBlank);
@@ -110,42 +71,8 @@ const MyProvider = (props) => {
 
   let [ editCard, setEditCard ] = useState(false);
 
-  const orderPhysicalCardBlank = {
-    plan: "",
-    users_id: null,
-  };
-
-  let [ orderPhysicalCard, setPhysicalCard ] = useState(orderPhysicalCardBlank);
-
   const handleOrderPhysicalCard = (event) => {
     const { name, value } = event.currentTarget;
-
-    setPhysicalCard({
-      ...orderPhysicalCard,
-      [name]: value, 
-    });
-  };
-
-  // let cardOrderAddress = {
-  //   first_name: "",
-  //   last_name: "",
-  //   street_and_number: "",
-  //   city: "",
-  //   zip_code: "",
-  //   country: "",
-  //   phone_number: 0
-  // }
-
-  // let [ orderAddress, setOrderAddress ] = useState(cardOrderAddress);
-
-  // const handleOrderAddress = (event) => {
-  //   const { name, value } = event.currentTarget;
-
-  //   setOrderAddress({
-  //     ...orderAddress,
-  //     [name]: value, 
-  // });
-  // };
     
     return (
         <MyContext.Provider 
@@ -173,5 +100,6 @@ const MyProvider = (props) => {
         </MyContext.Provider> 
     )
 };
+}
 
 export default MyProvider;
